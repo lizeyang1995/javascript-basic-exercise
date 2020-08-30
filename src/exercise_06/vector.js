@@ -17,6 +17,11 @@ export default class Vector {
     this.y = y;
   }
 
+  // private(value) {
+  //   const privateValue = value;
+  //   return privateValue;
+  // }
+
   static plus(vector, anotherVector) {
     return new Vector(vector.x + anotherVector.x, vector.y + anotherVector.y);
   }
