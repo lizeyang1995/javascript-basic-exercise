@@ -9,7 +9,7 @@ export default function formatNumber(number, option) {
   // * Please do NOT modify the signature of the function.
 
   const twoDecimalNumber = number.toFixed(2);
-  if (option.currency) {
+  if (option !== undefined && option.currency) {
     return `$ ${twoDecimalNumber}`;
   }
   return `${twoDecimalNumber}`;
