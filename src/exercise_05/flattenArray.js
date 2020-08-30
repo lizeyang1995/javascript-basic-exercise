@@ -9,4 +9,5 @@ export default function flattenArray(array) {
   if (array === null || array === undefined) {
     throw new Error('Flatten undefined or null array');
   }
+  return array.flatMap(value => value);
 }
