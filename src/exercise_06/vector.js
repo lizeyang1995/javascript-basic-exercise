@@ -20,4 +20,8 @@ export default class Vector {
   static plus(vector, anotherVector) {
     return new Vector(vector.x + anotherVector.x, vector.y + anotherVector.y);
   }
+
+  static minus(vector, anotherVector) {
+    return new Vector(vector.x - anotherVector.x, vector.y - anotherVector.y);
+  }
 }
