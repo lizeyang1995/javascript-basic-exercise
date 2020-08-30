@@ -24,4 +24,8 @@ export default class Vector {
   static minus(vector, anotherVector) {
     return new Vector(vector.x - anotherVector.x, vector.y - anotherVector.y);
   }
+
+  distance() {
+    return Math.sqrt((this.x ** 2) + (this.y ** 2));
+  }
 }
