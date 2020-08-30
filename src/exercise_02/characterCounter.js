@@ -9,4 +9,8 @@ export default function countCharacter(string, prediction) {
   if (string === undefined || string === null) {
     return 0;
   }
+  const stringLength = string.length;
+  if (prediction === undefined) {
+    return stringLength;
+  }
 }
