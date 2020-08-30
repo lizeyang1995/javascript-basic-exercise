@@ -13,4 +13,11 @@ export default function countCharacter(string, prediction) {
   if (prediction === undefined) {
     return stringLength;
   }
+  let numberOfCharacters = 0;
+  for (let index = 0; index < stringLength; index += 1) {
+    if (prediction(string[index])) {
+      numberOfCharacters += 1;
+    }
+  }
+  return numberOfCharacters;
 }
