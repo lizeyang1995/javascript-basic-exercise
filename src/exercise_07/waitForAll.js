@@ -9,9 +9,22 @@ export default function waitForAll(...promises) {
   // * Please implement this function and pass all the tests in wait_for_all_spec.js.
   // * Please do NOT modify the signature of the function.
 
-  const allPromises = promises.every(promise => promise instanceof Promise);
-  if (!allPromises) {
-    throw new Error('Not all elements are promises.');
+  const isRejectPromises = [];
+  const processedPromises = [];
+  for (let index = 0; index < promises.length; index += 1) {
+    if (!(promises[index] instanceof Promise)) {
+      throw new Error('Not all elements are promises.');
+    }
+    isRejectPromises.push(false);
+    processedPromises.push(promises[index].catch(() => {
+      isRejectPromises[index] = true;
+    }));
   }
-  return Promise.all(promises);
+  return Promise.all(processedPromises).then((promise) => {
+    const indexOfReject = isRejectPromises.indexOf(true);
+    if (indexOfReject !== -1) {
+      throw promise[indexOfReject];
+    }
+    return promise;
+  });
 }
