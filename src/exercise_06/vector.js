@@ -15,6 +15,16 @@ export default class Vector {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+    Object.defineProperties(this, {
+      x: {
+        writable: false,
+        configurable: false,
+      },
+      y: {
+        writable: false,
+        configurable: false,
+      },
+    });
   }
 
   static plus(vector, anotherVector) {
