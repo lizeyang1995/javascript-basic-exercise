@@ -9,5 +9,12 @@ export default function flattenArray(array) {
   if (array === null || array === undefined) {
     throw new Error('Flatten undefined or null array');
   }
-  return array.flatMap(value => value);
+  const resultArray = [];
+  array.map((item) => {
+    if (item instanceof Array) {
+      return item.map(value => resultArray.push(value));
+    }
+    return resultArray.push(item);
+  });
+  return resultArray;
 }
